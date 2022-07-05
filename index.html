@@ -175,7 +175,7 @@
 					<div>
 					<img class="center" src="./images/fig2.png" width="800" /> <br>
 					<p class="image-caption">
-						Figure 2. The proposed pipeline for detecting oil tanks in SAR images, uses optical-SAR self-supervised learning to pre-train a better feature extractor as the initialization in the training stage. First, the optical network guides the SAR network as the teacher. Then, the model detects the oil tanks during inference using only SAR images as input.
+						Figure 2. Visualization of ship shape aware instance switching. (b) shows the copy and paste strategy that is unable to maintain the ship direction consistency (c) illustrates the result of direct switching that leads to obvious background noise. (d) shows the result of our proposed method. It ensures the consistency of ship direction and background.
 					</p>				
 					</div>
 				</td>
@@ -214,7 +214,7 @@
     <tr>
       <td>
         <div>
-        <img class="center" src="images/statistics.PNG" width="1000" /> <br>
+        <img class="center" src="images/instance-switch.PNG" width="1000" /> <br>
         <p class="image-caption">
           Figure 2. Statistics of classes and instances in AI-TOD-v2. (a) Histogram of the number of instances per class. (b) Histogram of number of instances per image. (c) Histogram of number of instances’ sizes. (d) Boxplot depicting the range of sizes for each object category.
         </p>				
@@ -254,7 +254,7 @@
 
 			<tr>
 					<td>
-							<h3 class="add-top-margin">A Comparison of Different Methods on Shape-Aware-Shipdet</h3>
+							<h3 class="add-top-margin">A Comparison of Baseline on Ship Detection Dataset</h3>
 							
 					</td>
 			</tr>
@@ -262,9 +262,9 @@
 			<tr>
 				<td>
 					<div>
-					<img class="center" src="images/fig3.png" width="1000" /> <br>
+					<img class="center" src="images/vis.png" width="1000" /> <br>
 					<p class="image-caption">
-						Figure 3. Visualization of detection results using our proposed method compared with other state-of-the-art methods. The green boxes refer to the correct detection results, the yellow boxes refer to the false detection results, and the red boxes refer to the missing targets.
+						Figure 3. Visualization of ship detection results. (a), (c) and (e) are the results of baseline. (b), (d) and (f) are the results of our proposed method. The green bounding box indicates the True Positive, blue bounding box indicates the False Negative, red bounding box indicates the False Negative, and the yellow bounding box indicates the right location but wrong classification.
 					</p>				
 					</div>
 				</td>
