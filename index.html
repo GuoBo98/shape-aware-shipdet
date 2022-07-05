@@ -79,17 +79,18 @@
 					<!-- <td colspan="1"> -->
 
 				<p class="text" style="text-align:justify;">
-					In recent years, object detection in high-resolution SAR images has made significant progress, 
-					especially after the introduction of deep learning. However, the dense oil tanks, 
-					which are compactly arranged targets in SAR images, are still challenging to recognize due to the unique imaging mechanism of SAR. 
-					Inspired by human learning from comparison, we propose a multi-stage framework  for oil tank detection in SAR images using optical image enhancement. 
-					Specifically, in the training stage, we build the teacher-student network to transfer the knowledge between the two modalities, 
-					where the optical oil tank features are used to guide SAR oil tank features learning. While in the inference stage, 
-					the network detects oil tank targets using only SAR images as input. Besides, a pre-training stage before training is applied to 
-					further improve the network's ability for SAR feature extraction, which is realized by the proposed 
-					paired optical-SAR self-supervised learning. To verify the effectiveness of the proposed method, 
-					we performed experiments on our newly built Shape-Aware-Shipdet dataset. 
-					Extensive experiments demonstrate that the proposed method can effectively improve the performance of SAR image oil tank detection.
+					Fine-grained ship detection is a significant task in high-resolution remote sensing images. 
+					However, large aspect ratios and severe category imbalance make fine-grained ship detection a challenging task. 
+					Current general feature extraction methods are not entirely suitable for ships with large aspect ratios, 
+					which will lead to misalignments in feature extraction, affecting the succeeding localization and classification. 
+					For this problem, we propose a shape-aware feature learning method to fix the misalignments during feature extraction. 
+					And For the problem of category imbalance, we design a ship shape-aware instance switching to balance the quantity distribution 
+					of ships in different categories. It can ensure the consistency of the ocean background and ship direction when replacing 
+					common ship instances with rare ship instances, which can improve the network's learning ability for rare instances. To verify 
+					the effectiveness of the proposed method, we construct a multi-category ship detection dataset (MCSD) that contains 4000 images 
+					carefully labeled with oriented bounding boxes, including 16 types of ship objects and nearly 18,000 instances. 
+					We conduct experiments on MCSD and ShipRSImageNet, and extensive experiments indicate our proposed method's superiority for 
+					ship detection.
 				</p>
 					<!-- </td> -->
 			</tr>
