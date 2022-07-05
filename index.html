@@ -141,13 +141,10 @@
 					in which ships are precisely labeled with oriented bounding boxes (OBB). Our contributions can be summarized as follows.
 					
 			<ul style="font-weight:normal; text-align:justify;">
-					<li> We propose a pipeline that uses optical images to guide SAR images to train a better oil tank detector in SAR images. Paired optical images and SAR images are used in the training stage, while only SAR images are used in the inference stage. </li>
-					<li> We introduce paired optical-SAR images into the self-supervised learning to obtain a better SAR image feature extractor, improving the downstream oil tank detection task by 8-9 %. </li>
-					<li> We construct an oil tank detection dataset, Shape-Aware-Shipdet, to explore the effectiveness of the proposed method. The dataset contains 820 paired SAR-Optical images with carefully labeled bounding boxes.</li>							
-			</ul>
-
-
-					
+					<li> We design a shape-aware feature learning method that contains Shape-aware RoI Extractor (SRE) and Shape-aware Rotated RoI Align (SRRA). It performs RoI feature extraction at each level of FPN and fuses these features based on the attention mechanism. It also introduces the shape-aware rotate RoI Align to adapt the shape of the ship, which fixes the problem of feature misalignment during feature extraction. </li>
+					<li> We design a Shape-aware Instance Switching (SIS) to solve the problem of quantity imbalance in different categories. It ensures the consistency of the ocean background and ship direction during replacing common ship instances with rare ship instances. </li>
+					<li> We contribute a high-resolution optical multi-category ship detection dataset (MCSD) with high-quality OBB annotation, expanding the size of the existing multi-class ship dataset.</li>							
+			</ul>				
 
 				</p>
 			</tr>
@@ -155,7 +152,7 @@
 			<tr>
 				<td>
 					<div>
-					<img class="center" src="./images/fig1.png" width="800" /> <br>
+					<img class="center" src="./images/SRE.png" width="800" /> <br>
 					<p class="image-caption">
 						Figure 1. (a) is the high-resolution SAR image with compact oil tanks. The SAR Intensity is visualized with three polarizations (HH, VV, HV) displayed through the Red, Green, and Blue color channels. (b) is the corresponding optical image. (c) is the detection result of Faster R-CNN. (d) is the detection result of our method. (The green boxes refer to the correct detection results, the yellow boxes refer to the false detection results, and the red boxes refer to the missing targets.
 					</p>				
@@ -163,7 +160,7 @@
 				</td>
 			</tr>
 
-			<tr>
+<!-- 			<tr>
 				<p class="text" style="text-align:justify;">
 					For the existing methods, the unsatisfactory detection accuracy is mainly caused by the indistinguishable appearance of the oil tanks in  high-resolution SAR images. 
 					So naturally, how can we teach the network learning to recognize the oil tank in SAR images? 
@@ -171,7 +168,7 @@
 					we often learn to recognize it by comparing the corresponding image of a recognizable modality. 
 					Inspired by that, we propose introducing optical images more suitable for human vision to guide the network to learn the feature of oil tanks in SAR images. 
 				</p>
-			</tr>
+			</tr> -->
 
 			<tr>
 				<td>
@@ -184,7 +181,7 @@
 				</td>
 			</tr>
 			
-			<tr>
+<!-- 			<tr>
 				<td>
 				<p class="text" style="text-align:justify;">
 					  Based on the above, we design a multi-stage pipeline for detecting oil tanks in SAR images with the enhancement of optical images, as shown in Figure. 2. 
@@ -200,7 +197,7 @@
 
 				</p>
 				</td>
-			</tr>
+			</tr> -->
       <!-- <tr>
 				<td>
 						<h2 class="add-top-margin">AI-TOD-v2</h2>
