@@ -2,11 +2,8 @@
 <html>
 <head>
 
-<<<<<<< HEAD
 	<title>Spape-Aware-Shipdet</title>
-=======
 	<title>Shape-Aware-Shipdet</title>
->>>>>>> fff331e8f7705fa78530282812519c749883596d
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
 	<link href="css/index.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -108,33 +105,62 @@
 
 			<tr>
 				<p class="text" style="text-align:justify;">
-					Synthetic Aperture Radar~(SAR) sensors have the unique capability to penetrate clouds and collect during all-weather, day, and night conditions,
-					which has been widely used in both civilian and military fields . 
-					High-resolution SAR data can provide more valuable information when weather and cloud cover can obstruct traditional optical sensors, 
-					which are suitable for detecting and monitoring some typical objects, such as buildings, ships, planes, vehicles, and oil tanks. 
-					In this work, we focus on detecting oil tanks in  high-resolution SAR images.
+					Fine-grained ship detection in high-resolution remote sensing images is important for marine monitoring and management, 
+					maritime rescue and coastal military defense early warning, etc. 
+					In recent years, the resolution of remote sensing images is increasing with the development of earth observation technology, 
+					which provides strong support for fine-grained ship detection and recognition.
+					
+
+          <br>
+	  <br>
+					Benefiting from the powerful feature representation of deep convolutional neural network (DCNN), object detection algorithms based on DCNN, 
+					such as Faster R-CNN, YOLO, and SSD have achieved excellent detection results in natural scene images. 
+					However, remote sensing images are different from natural scene images in terms of imaging angle and resolution. The massive variations in the scale and orientation 
+					of objects caused by the bird's-eye view bring challenges to remote sensing object detection. As the essential target in optical remote sensing 
+					images, ship has the characteristics of arbitrary direction, large aspect ratio, and multiple categories, which lead to the following problems for ship detection in 
+					remote sensing images.
  
           <br>
           <br>
-            However, detecting the oil tanks in SAR images is very challenging due to the unique imaging mechanism of SAR images. 
-			The oil tank targets in the SAR images are usually dense and compact with more overlaps and discrete scattering centers, which increases the difficulty of location in detection. 
-			Figure. 1 shows some samples of SAR images with oil tanks. 
-			As we can see, the heavy scattering interference between the dense oil tanks causes a blurred and cluttered appearance, which is hard to distinguish even the experts of SAR image analysis.
+            <b>Large aspect ratio</b>: Different from common objects, ships in remote sensing images have large aspect ratios. 
+					The long and short edges of the ship need different size of receptive fields and feature representation parameters. 
+					However, current feature extraction methods obtain square-like features on a single-level feature map. 
+					Single-level feature map cannot provide multi-scale receptive fields, and the square-like RoI Align treats the long and short 
+					edges equally, wasting a lot of parameters on the representation of short edge.
+					
+          <br>
+          <br>
+            <b>Severe Category Imbalance</b>: The number of ship instances of different categories varies greatly and presents a long-tail distribution, 
+					leading to severe quantity imbalance in different categories. 
+					The instance amount of particular ships is small and model does not pay much attention to these categories during the training 
+					and learning, which will degrade the performance of detector.
+	  <br>
+	  <br>
+					In this paper, we design a novel ship detection network with Shape-aware feature learning and Shape-aware Instance Switching to solve the above problems. The Shape-aware feature learning workflow can be seen from Figure 1. and Figure 2. shows the visualization of Shape-aware Instance Switching.  
+					To verify the effectiveness of our method, we construct a high-resolution optical multi-category ship detection dataset (MCSD), 
+					in which ships are precisely labeled with oriented bounding boxes (OBB). Our contributions can be summarized as follows.
+					
+			<ul style="font-weight:normal; text-align:justify;">
+					<li> We design a shape-aware feature learning method that contains Shape-aware RoI Extractor (SRE) and Shape-aware Rotated RoI Align (SRRA). It performs RoI feature extraction at each level of FPN and fuses these features based on the attention mechanism. It also introduces the shape-aware rotate RoI Align to adapt the shape of the ship, which fixes the problem of feature misalignment during feature extraction. </li>
+					<li> We design a Shape-aware Instance Switching (SIS) to solve the problem of quantity imbalance in different categories. It ensures the consistency of the ocean background and ship direction during replacing common ship instances with rare ship instances. </li>
+					<li> We contribute a high-resolution optical multi-category ship detection dataset (MCSD) with high-quality OBB annotation, expanding the size of the existing multi-class ship dataset.</li>							
+			</ul>				
+
 				</p>
 			</tr>
 
 			<tr>
 				<td>
 					<div>
-					<img class="center" src="./images/fig1.png" width="800" /> <br>
+					<img class="center" src="./images/SRE.png" width="800" /> <br>
 					<p class="image-caption">
-						Figure 1. (a) is the high-resolution SAR image with compact oil tanks. The SAR Intensity is visualized with three polarizations (HH, VV, HV) displayed through the Red, Green, and Blue color channels. (b) is the corresponding optical image. (c) is the detection result of Faster R-CNN. (d) is the detection result of our method. (The green boxes refer to the correct detection results, the yellow boxes refer to the false detection results, and the red boxes refer to the missing targets.
+						Figure 1. The workflow of the shape-aware feature extraction. For each RoI generated by the RPN, instead of just using the single-level FPN feature, shape-aware rotate RoI align is performed on the feature map of each level of the FPN. Finally, the extracted multi-level features are accumulated together, followed by a spatial attention module to weight the fused features to guide the learning of the detector.
 					</p>				
 					</div>
 				</td>
 			</tr>
 
-			<tr>
+<!-- 			<tr>
 				<p class="text" style="text-align:justify;">
 					For the existing methods, the unsatisfactory detection accuracy is mainly caused by the indistinguishable appearance of the oil tanks in  high-resolution SAR images. 
 					So naturally, how can we teach the network learning to recognize the oil tank in SAR images? 
@@ -142,20 +168,20 @@
 					we often learn to recognize it by comparing the corresponding image of a recognizable modality. 
 					Inspired by that, we propose introducing optical images more suitable for human vision to guide the network to learn the feature of oil tanks in SAR images. 
 				</p>
-			</tr>
+			</tr> -->
 
 			<tr>
 				<td>
 					<div>
 					<img class="center" src="./images/fig2.png" width="800" /> <br>
 					<p class="image-caption">
-						Figure 2. The proposed pipeline for detecting oil tanks in SAR images, uses optical-SAR self-supervised learning to pre-train a better feature extractor as the initialization in the training stage. First, the optical network guides the SAR network as the teacher. Then, the model detects the oil tanks during inference using only SAR images as input.
+						Figure 2. Visualization of ship shape aware instance switching. (b) shows the copy and paste strategy that is unable to maintain the ship direction consistency (c) illustrates the result of direct switching that leads to obvious background noise. (d) shows the result of our proposed method. It ensures the consistency of ship direction and background.
 					</p>				
 					</div>
 				</td>
 			</tr>
 			
-			<tr>
+<!-- 			<tr>
 				<td>
 				<p class="text" style="text-align:justify;">
 					  Based on the above, we design a multi-stage pipeline for detecting oil tanks in SAR images with the enhancement of optical images, as shown in Figure. 2. 
@@ -171,7 +197,7 @@
 
 				</p>
 				</td>
-			</tr>
+			</tr> -->
       <!-- <tr>
 				<td>
 						<h2 class="add-top-margin">AI-TOD-v2</h2>
@@ -188,7 +214,7 @@
     <tr>
       <td>
         <div>
-        <img class="center" src="images/statistics.PNG" width="1000" /> <br>
+        <img class="center" src="images/instance-switch.PNG" width="1000" /> <br>
         <p class="image-caption">
           Figure 2. Statistics of classes and instances in AI-TOD-v2. (a) Histogram of the number of instances per class. (b) Histogram of number of instances per image. (c) Histogram of number of instances’ sizes. (d) Boxplot depicting the range of sizes for each object category.
         </p>				
@@ -228,7 +254,7 @@
 
 			<tr>
 					<td>
-							<h3 class="add-top-margin">A Comparison of Different Methods on Shape-Aware-Shipdet</h3>
+							<h3 class="add-top-margin">A Comparison of Baseline on Ship Detection Dataset</h3>
 							
 					</td>
 			</tr>
@@ -236,9 +262,9 @@
 			<tr>
 				<td>
 					<div>
-					<img class="center" src="images/fig3.png" width="1000" /> <br>
+					<img class="center" src="images/vis.png" width="1000" /> <br>
 					<p class="image-caption">
-						Figure 3. Visualization of detection results using our proposed method compared with other state-of-the-art methods. The green boxes refer to the correct detection results, the yellow boxes refer to the false detection results, and the red boxes refer to the missing targets.
+						Figure 3. Visualization of ship detection results. (a), (c) and (e) are the results of baseline. (b), (d) and (f) are the results of our proposed method. The green bounding box indicates the True Positive, blue bounding box indicates the False Negative, red bounding box indicates the False Negative, and the yellow bounding box indicates the right location but wrong classification.
 					</p>				
 					</div>
 				</td>
