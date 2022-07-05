@@ -122,10 +122,19 @@
  
           <br>
           <br>
-            However, detecting the oil tanks in SAR images is very challenging due to the unique imaging mechanism of SAR images. 
-			The oil tank targets in the SAR images are usually dense and compact with more overlaps and discrete scattering centers, which increases the difficulty of location in detection. 
-			Figure. 1 shows some samples of SAR images with oil tanks. 
-			As we can see, the heavy scattering interference between the dense oil tanks causes a blurred and cluttered appearance, which is hard to distinguish even the experts of SAR image analysis.
+            <b>Large aspect ratio</b>: Different from common objects, ships in remote sensing images have large aspect ratios. 
+					The long and short edges of the ship need different size of receptive fields and feature representation parameters. 
+					However, current feature extraction methods obtain square-like features on a single-level feature map. 
+					Single-level feature map cannot provide multi-scale receptive fields, and the square-like RoI Align treats the long and short 
+					edges equally, wasting a lot of parameters on the representation of short edge.
+					
+          <br>
+          <br>
+            <b>Severe Category Imbalance</b>: The number of ship instances of different categories varies greatly and presents a long-tail distribution, 
+					leading to severe quantity imbalance in different categories. 
+					The instance amount of particular ships is small and model does not pay much attention to these categories during the training 
+					and learning, which will degrade the performance of detector.
+
 				</p>
 			</tr>
 
