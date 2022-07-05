@@ -122,18 +122,40 @@
  
           <br>
           <br>
-            <b>Large aspect ratio</b>: Different from common objects, ships in remote sensing images have large aspect ratios. 
+            <b>Large aspect ratio</b>: Different from common objects, as shown in Figure 1., ships in remote sensing images have large aspect ratios. 
 					The long and short edges of the ship need different size of receptive fields and feature representation parameters. 
 					However, current feature extraction methods obtain square-like features on a single-level feature map. 
 					Single-level feature map cannot provide multi-scale receptive fields, and the square-like RoI Align treats the long and short 
 					edges equally, wasting a lot of parameters on the representation of short edge.
 					
+			<tr>
+				<td>
+					<div>
+					<img class="center" src="./images/annotation_description.png" width="800" /> <br>
+					<p class="image-caption">
+						Figure 1. Ship instance has a large aspect ratio
+					</p>				
+					</div>
+				</td>
+			</tr>
+					
           <br>
           <br>
             <b>Severe Category Imbalance</b>: The number of ship instances of different categories varies greatly and presents a long-tail distribution, 
-					leading to severe quantity imbalance in different categories. 
+					leading to severe quantity imbalance in different categories, as shown in Figure 2.
 					The instance amount of particular ships is small and model does not pay much attention to these categories during the training 
 					and learning, which will degrade the performance of detector.
+					
+			<tr>
+				<td>
+					<div>
+					<img class="center" src="./images/instance_distribution.png" width="800" /> <br>
+					<p class="image-caption">
+						Figure 2. The distribution of the number of different categories in the MCSD. The number of ships of different categories shows a long tail distribution.
+					</p>				
+					</div>
+				</td>
+			</tr>
 	  <br>
 	  <br>
 					In this paper, we design a novel ship detection network with Shape-aware feature learning and Shape-aware Instance Switching to solve the above problems. The Shape-aware feature learning workflow can be seen from Figure 3. and Figure 4. shows the visualization of Shape-aware Instance Switching.  
