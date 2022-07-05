@@ -134,6 +134,20 @@
 					leading to severe quantity imbalance in different categories. 
 					The instance amount of particular ships is small and model does not pay much attention to these categories during the training 
 					and learning, which will degrade the performance of detector.
+	  <br>
+	  <br>
+					In this paper, we design a novel ship detection network with Shape-aware feature learning and Shape-aware Instance Switching to solve the above problems. 
+					To verify the effectiveness of our method, we construct a high-resolution optical multi-category ship detection dataset (MCSD), 
+					in which ships are precisely labeled with oriented bounding boxes (OBB). Our contributions can be summarized as follows.
+					
+			<ul style="font-weight:normal; text-align:justify;">
+					<li> We propose a pipeline that uses optical images to guide SAR images to train a better oil tank detector in SAR images. Paired optical images and SAR images are used in the training stage, while only SAR images are used in the inference stage. </li>
+					<li> We introduce paired optical-SAR images into the self-supervised learning to obtain a better SAR image feature extractor, improving the downstream oil tank detection task by 8-9 %. </li>
+					<li> We construct an oil tank detection dataset, Shape-Aware-Shipdet, to explore the effectiveness of the proposed method. The dataset contains 820 paired SAR-Optical images with carefully labeled bounding boxes.</li>							
+			</ul>
+
+
+					
 
 				</p>
 			</tr>
