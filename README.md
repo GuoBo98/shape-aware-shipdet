@@ -2,5 +2,6 @@ Fine-Grained Ship Detection in High-Resolution Remote Sensing Images with Shape-
 
 Data and code are released at https://github.com/GuoBo98/ship-aware-det-code
 
-Data：https://pan.baidu.com/s/11k9hBMEma89X_Mse2BYkww 
-Key：q5bb
+Baidu Cloud：https://pan.baidu.com/s/11sdT9_E_sg5TltgHCIbzyw password: csdm
+
+Google Drive： https://drive.google.com/file/d/1mPNHT2G0Lc6h156sHFqBdGcJvPBgfWYw/view?usp=sharing
